@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pswd generator</title>
     <?php
+    session_start();
         require __DIR__ . './libs/helper.php';
         $pswdLength=$_GET['pswd-input'] ?? false;
     ?>
@@ -19,7 +20,9 @@
     <?php
         $pswdLength=intval($pswdLength);
         if($pswdLength && $pswdLength>=4){
-            echo ('<h1>' .str_shuffle(generatePswd($pswdLength)) .'</h1>');
+            $_SESSION['newPswd'] = str_shuffle(generatePswd($pswdLength));
+            var_dump($_SESSION['newPswd']);
+            header('Location: ./result.php');
         }
     ?>
 </body>
