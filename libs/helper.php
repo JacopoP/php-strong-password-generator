@@ -1,6 +1,4 @@
 <?php
-    session_start();
-
     function generatePswd($length, $rep){
         $charUpArray=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'U', 'W', 'X', 'Y', 'Z'];
         $charLowArray=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
@@ -13,7 +11,7 @@
         $nSpec=$length - $nUp - $nLow - $nNum;
         for($i=0; $i<$nUp; $i++){
             $char=$charUpArray[rand(0, 25)];
-            if($rep=='y' && str_contains($pswd, $char)){
+            if($rep=='n' && str_contains($pswd, $char)){
                 $i--;
             }
             else{
@@ -22,7 +20,7 @@
         }
         for($i=0; $i<$nLow; $i++){
             $char=$charLowArray[rand(0, 25)];
-            if($rep=='y' && str_contains($pswd, $char)){
+            if($rep=='n' && str_contains($pswd, $char)){
                 $i--;
             }
             else{
@@ -31,7 +29,7 @@
         }
         for($i=0; $i<$nNum; $i++){
             $char=$charNumArray[rand(0, 9)];
-            if($rep=='y' && str_contains($pswd, $char)){
+            if($rep=='n' && str_contains($pswd, $char)){
                 $i--;
             }
             else{
@@ -47,5 +45,5 @@
                 $pswd.=$char;
             }
         }
-        return $pswd;
+        return str_shuffle($pswd);
     }

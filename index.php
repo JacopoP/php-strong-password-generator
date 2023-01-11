@@ -9,7 +9,7 @@
     session_start();
         require __DIR__ . './libs/helper.php';
         $pswdLength=$_GET['pswd-input'] ?? false;
-        $repChar=$_POST['repChar'] ?? false;
+        $repChar=$_GET['repChar'] ?? false;
     ?>
 </head>
 <body>
